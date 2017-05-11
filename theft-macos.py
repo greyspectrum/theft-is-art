@@ -8,6 +8,8 @@ from subprocess import call
 
 call(["/usr/bin/ruby", "-e", "$(curl", "-fsSL", "https://raw.githubusercontent.com/Homebrew/install/master/install)"])
 
+call(["brew", "update"])
+
 call(["brew", "install", "libav"])
 
 call(["sudo", "curl", "-L", "https://yt-dl.org/downloads/latest/youtube-dl", "-o", "/usr/local/bin/youtube-dl"])
