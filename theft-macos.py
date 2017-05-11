@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# A macOS port of theft.py
+
 import subprocess
 
 from subprocess import call
