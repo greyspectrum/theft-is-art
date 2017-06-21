@@ -19,7 +19,7 @@ def query_yes_no(question, default="yes"):
 
     while True:
         sys.stdout.write(question + prompt)
-        choice = raw_input().lower()
+        choice = input().lower()
         if default is not None and choice == '':
             return valid[default]
         elif choice in valid:
@@ -28,7 +28,7 @@ def query_yes_no(question, default="yes"):
             sys.stdout.write("Please respond with 'yes' or 'no' "
                              "(or 'y' or 'n').\n")
 
-query_yes_no("Would you like to install dependencies? This is only necessary the first time you run this script.")
+answer = query_yes_no("Would you like to install dependencies? This is only necessary the first time you run this script.")
 
 # Install youtube-dl
 
