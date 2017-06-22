@@ -28,25 +28,17 @@ def query_yes_no(question, default="yes"):
             sys.stdout.write("Please respond with 'yes' or 'no' "
                              "(or 'y' or 'n').\n")
 
-answer = query_yes_no("Would you like to install dependencies? This is only necessary the first time you run this script.")
+query_yes_no("Would you like to install dependencies? This is only necessary the first time you run this script.")
 
-# Install youtube-dl
+    if query_yes_no is True:
+        call(["sudo", "curl", "-L", "https://yt-dl.org/downloads/latest/youtube-dl", "-o", "/usr/local/bin/youtube-dl"])
+        call(["sudo", "chmod", "a+rx", "/usr/local/bin/youtube-dl"])
+        call(["sudo", "apt-get", "install", "libav-tools"])
+        os.chdir(~/Music)
+        link = input("Enter the url for the youtube video: ")
+        call(["youtube-dl", "--extract-audio", "--audio-format", "mp3", "--output", "\"%(uploader)s%(title)s.%(ext)s\"", link])
 
-call(["sudo", "curl", "-L", "https://yt-dl.org/downloads/latest/youtube-dl", "-o", "/usr/local/bin/youtube-dl"])
-call(["sudo", "chmod", "a+rx", "/usr/local/bin/youtube-dl"])
-
-# Install avconv
-
-call(["sudo", "apt-get", "install", "libav-tools"])
-
-# Switch to Music
-
-os.chdir(~/Music)
-
-# Ask user for the youtube video url
-
-link = input("Enter the url for the youtube video: ")
-
-# Download video
-
-call(["youtube-dl", "--extract-audio", "--audio-format", "mp3", "--output", "\"%(uploader)s%(title)s.%(ext)s\"", link])
+    elif query_yes_no is False:
+        os.chdir(~/Music)
+        link = input("Enter the url for the youtube video: ")
+        call(["youtube-dl", "--extract-audio", "--audio-format", "mp3", "--output", "\"%(uploader)s%(title)s.%(ext)s\"", link])
